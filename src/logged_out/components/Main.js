@@ -32,7 +32,7 @@ function Main(props) {
   const selectHome = useCallback(() => {
     smoothScrollTop();
     document.title =
-      "Toggle - Free template for building a SaaS or admin application";
+      "Toggle - Home";
     setSelectedTab("Home");
   }, [setSelectedTab]);
 
