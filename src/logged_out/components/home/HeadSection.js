@@ -130,7 +130,7 @@ function HeadSection(props) {
                             variant={isWidthUp("lg", width) ? "h6" : "body1"}
                             color="textSecondary"
                           >
-                            A Rich Feature Toggle Library
+                            A Rich Feature Toggle Library an SaaS
                           </Typography>
                         </Box>
                         <Button
