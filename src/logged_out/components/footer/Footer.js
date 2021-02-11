@@ -77,12 +77,8 @@ const styles = theme => ({
 
 const infos = [
   {
-    icon: <PhoneIcon />,
-    description: "+1 555 123456"
-  },
-  {
     icon: <MailIcon />,
-    description: "support@company.com"
+    description: "support@togglee.com"
   }
 ];
 
@@ -101,7 +97,7 @@ const socialIcons = [
       </svg>
     ),
     label: "Github",
-    href: "https://github.com/dunky11/react-saas-template"
+    href: "https://github.com/togglee"
   },
   {
     icon: (
@@ -226,8 +222,7 @@ function Footer(props) {
               About the Company
             </Typography>
             <Typography style={{ color: "#8f9296" }} paragraph>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-              euismod convallis velit, eu auctor lacus vehicula sit amet.
+              We are a few passionate developers that want to share tools with other developers.
             </Typography>
             <Box display="flex">
               {socialIcons.map((socialIcon, index) => (

@@ -6,14 +6,12 @@ import {
   Typography,
   Card,
   Button,
-  Hidden,
   Box,
   withStyles,
   withWidth,
   isWidthUp,
 } from "@material-ui/core";
 import WaveBorder from "../../../shared/components/WaveBorder";
-import ZoomImage from "../../../shared/components/ZoomImage";
 
 const styles = (theme) => ({
   extraLargeButtonLabel: {
@@ -112,7 +110,7 @@ function HeadSection(props) {
             >
               <div className={classNames(classes.containerFix, "container")}>
                 <Box justifyContent="space-between" className="row">
-                  <Grid item xs={12} md={5}>
+                  <Grid item xs={12} md={12}>
                     <Box
                       display="flex"
                       flexDirection="column"
@@ -123,8 +121,7 @@ function HeadSection(props) {
                         <Typography
                           variant={isWidthUp("lg", width) ? "h3" : "h4"}
                         >
-                          Free Template for building a SaaS app using
-                          Material-UI
+                          Togglee
                         </Typography>
                       </Box>
                       <div>
@@ -133,8 +130,7 @@ function HeadSection(props) {
                             variant={isWidthUp("lg", width) ? "h6" : "body1"}
                             color="textSecondary"
                           >
-                            Lorem ipsum dolor sit amet, consetetur sadipscing
-                            elitr, sed diam nonumy eirmod tempor invidunt
+                            A Rich Feature Toggle Library
                           </Typography>
                         </Box>
                         <Button
@@ -143,14 +139,14 @@ function HeadSection(props) {
                           fullWidth
                           className={classes.extraLargeButton}
                           classes={{ label: classes.extraLargeButtonLabel }}
-                          href="https://github.com/dunky11/react-saas-template"
+                          href="https://github.com/togglee"
                         >
-                          Download from GitHub
+                          Explore GitHub
                         </Button>
                       </div>
                     </Box>
                   </Grid>
-                  <Hidden smDown>
+                  {/* <Hidden smDown>
                     <Grid item md={6}>
                       <ZoomImage
                         src={`${process.env.PUBLIC_URL}/images/logged_out/headerImage.jpg`}
@@ -158,7 +154,7 @@ function HeadSection(props) {
                         alt="header example"
                       />
                     </Grid>
-                  </Hidden>
+                  </Hidden> */}
                 </Box>
               </div>
             </Card>

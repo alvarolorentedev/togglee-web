@@ -42,6 +42,24 @@ const styles = theme => ({
       marginRight: "auto",
       maxWidth: 360
     }
+  },
+  gridContainer: {
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: theme.spacing(6),
+      paddingRight: theme.spacing(6)
+    },
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4)
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2)
+    },
+    overflow: "hidden",
+    justifyContent: "center",
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1)
   }
 });
 
@@ -67,14 +85,14 @@ function PricingSection(props) {
             data-aos="zoom-in-up"
           >
             <PriceCard
-              title="Starter"
+              title="You Run It"
               pricing={
                 <span>
-                  $14.99
+                  Free
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
-              features={["Feature 1", "Feature 2", "Feature 3"]}
+              features={["Library all languages", "Documentation"]}
             />
           </Grid>
           <Grid
@@ -88,54 +106,14 @@ function PricingSection(props) {
           >
             <PriceCard
               highlighted
-              title="Premium"
+              title="We Run It"
               pricing={
                 <span>
-                  $29.99
+                  $2
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
-              features={["Feature 1", "Feature 2", "Feature 3"]}
-            />
-          </Grid>
-          <Grid
-            item
-            className={classes.cardWrapper}
-            xs={12}
-            sm={6}
-            lg={3}
-            data-aos="zoom-in-up"
-            data-aos-delay={isWidthUp("md", width) ? "400" : "0"}
-          >
-            <PriceCard
-              title="Business"
-              pricing={
-                <span>
-                  $49.99
-                  <Typography display="inline"> / month</Typography>
-                </span>
-              }
-              features={["Feature 1", "Feature 2", "Feature 3"]}
-            />
-          </Grid>
-          <Grid
-            item
-            className={classes.cardWrapper}
-            xs={12}
-            sm={6}
-            lg={3}
-            data-aos="zoom-in-up"
-            data-aos-delay={isWidthUp("md", width) ? "600" : "200"}
-          >
-            <PriceCard
-              title="Tycoon"
-              pricing={
-                <span>
-                  $99.99
-                  <Typography display="inline"> / month</Typography>
-                </span>
-              }
-              features={["Feature 1", "Feature 2", "Feature 3"]}
+              features={["Library all languages", "Documentation", "Hosted toggles", "UI To update and Define toggles"]}
             />
           </Grid>
         </Grid>

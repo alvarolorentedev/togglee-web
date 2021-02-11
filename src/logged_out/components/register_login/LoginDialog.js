@@ -144,12 +144,12 @@ function LoginDialog(props) {
                 We have send instructions on how to reset your password to your
                 email address
               </HighlightedInformation>
-            ) : (
-              <HighlightedInformation>
-                Email is: <b>test@web.com</b>
-                <br />
-                Password is: <b>HaRzwc</b>
-              </HighlightedInformation>
+            ) : (<></>
+              // <HighlightedInformation>
+              //   Email is: <b>test@web.com</b>
+              //   <br />
+              //   Password is: <b>HaRzwc</b>
+              // </HighlightedInformation>
             )}
           </Fragment>
         }

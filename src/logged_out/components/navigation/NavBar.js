@@ -82,7 +82,7 @@ function NavBar(props) {
               display="inline"
               color="primary"
             >
-              Wa
+              To
             </Typography>
             <Typography
               variant="h4"
@@ -90,7 +90,7 @@ function NavBar(props) {
               display="inline"
               color="secondary"
             >
-              Ver
+              gglee
             </Typography>
           </div>
           <div>
