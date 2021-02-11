@@ -11,7 +11,6 @@ import {
   isWidthUp,
   TextField
 } from "@material-ui/core";
-import PhoneIcon from "@material-ui/icons/Phone";
 import MailIcon from "@material-ui/icons/Mail";
 import WaveBorder from "../../../shared/components/WaveBorder";
 import transitions from "@material-ui/core/styles/transitions";
@@ -78,7 +77,7 @@ const styles = theme => ({
 const infos = [
   {
     icon: <MailIcon />,
-    description: "support@togglee.com"
+    description: "info@togglee.com"
   }
 ];
 
@@ -161,10 +160,26 @@ function Footer(props) {
       <div className={classes.footerInner}>
         <Grid container spacing={isWidthUp("md", width) ? 10 : 5}>
           <Grid item xs={12} md={6} lg={4}>
-            <form>
+            <form method="POST" action="https://formspree.io/f/moqpbgba">
               <Box display="flex" flexDirection="column">
                 <Box mb={1}>
                   <TextField
+
+                    name="_replyto"
+                    variant="outlined"
+                    placeholder="email"
+                    inputProps={{ "aria-label": "Get in Touch" }}
+                    InputProps={{
+                      className: classes.whiteBg
+                    }}
+                    rows={4}
+                    fullWidth
+                    required
+                  />
+                </Box>
+                <Box mb={1}>
+                  <TextField
+                    name="message"
                     variant="outlined"
                     multiline
                     placeholder="Get in touch with us"

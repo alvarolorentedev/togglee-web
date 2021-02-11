@@ -232,9 +232,17 @@ function NavBar(props) {
                 variant="h4"
                 className={classes.brandText}
                 display="inline"
+                color="secondary"
+              >
+                T
+              </Typography>
+              <Typography
+                variant="h4"
+                className={classes.brandText}
+                display="inline"
                 color="primary"
               >
-                To
+                o
               </Typography>
               <Typography
                 variant="h4"
@@ -242,7 +250,15 @@ function NavBar(props) {
                 display="inline"
                 color="secondary"
               >
-                gglee
+                ggl
+              </Typography>
+              <Typography
+                variant="h4"
+                className={classes.brandText}
+                display="inline"
+                color="primary"
+              >
+                ee
               </Typography>
             </Hidden>
           </Box>

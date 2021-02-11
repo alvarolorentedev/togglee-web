@@ -4,7 +4,6 @@ import classNames from "classnames";
 import {
   Grid,
   Typography,
-  isWidthUp,
   withWidth,
   withStyles
 } from "@material-ui/core";

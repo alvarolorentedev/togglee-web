@@ -119,9 +119,36 @@ function HeadSection(props) {
                     >
                       <Box mb={4}>
                         <Typography
-                          variant={isWidthUp("lg", width) ? "h3" : "h4"}
+                          variant="h4"
+                          className={classes.brandText}
+                          display="inline"
+                          color="secondary"
                         >
-                          Togglee
+                          T
+                        </Typography>
+                        <Typography
+                          variant="h4"
+                          className={classes.brandText}
+                          display="inline"
+                          color="primary"
+                        >
+                          o
+                        </Typography>
+                        <Typography
+                          variant="h4"
+                          className={classes.brandText}
+                          display="inline"
+                          color="secondary"
+                        >
+                          ggl
+                        </Typography>
+                        <Typography
+                          variant="h4"
+                          className={classes.brandText}
+                          display="inline"
+                          color="primary"
+                        >
+                          ee
                         </Typography>
                       </Box>
                       <div>
