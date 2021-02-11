@@ -21,14 +21,9 @@ import {
   withWidth,
 } from "@material-ui/core";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import ImageIcon from "@material-ui/icons/Image";
-import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import MenuIcon from "@material-ui/icons/Menu";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import MessagePopperButton from "./MessagePopperButton";
-import SideDrawer from "./SideDrawer";
-import Balance from "./Balance";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 
 const styles = (theme) => ({
@@ -127,11 +122,10 @@ const styles = (theme) => ({
 });
 
 function NavBar(props) {
-  const { selectedTab, messages, classes, width, openAddBalanceDialog } = props;
+  const { selectedTab, messages, classes, width } = props;
   // Will be use to make website more accessible by screen readers
   const links = useRef([]);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false);
 
   const openMobileDrawer = useCallback(() => {
     setIsMobileOpen(true);
@@ -141,13 +135,7 @@ function NavBar(props) {
     setIsMobileOpen(false);
   }, [setIsMobileOpen]);
 
-  const openDrawer = useCallback(() => {
-    setIsSideDrawerOpen(true);
-  }, [setIsSideDrawerOpen]);
 
-  const closeDrawer = useCallback(() => {
-    setIsSideDrawerOpen(false);
-  }, [setIsSideDrawerOpen]);
 
   const menuItems = [
     {
@@ -165,51 +153,7 @@ function NavBar(props) {
         ),
         mobile: <DashboardIcon className="text-white" />,
       },
-    },
-    {
-      link: "/c/posts",
-      name: "Posts",
-      onClick: closeMobileDrawer,
-      icon: {
-        desktop: (
-          <ImageIcon
-            className={
-              selectedTab === "Posts" ? classes.textPrimary : "text-white"
-            }
-            fontSize="small"
-          />
-        ),
-        mobile: <ImageIcon className="text-white" />,
-      },
-    },
-    {
-      link: "/c/subscription",
-      name: "Subscription",
-      onClick: closeMobileDrawer,
-      icon: {
-        desktop: (
-          <AccountBalanceIcon
-            className={
-              selectedTab === "Subscription"
-                ? classes.textPrimary
-                : "text-white"
-            }
-            fontSize="small"
-          />
-        ),
-        mobile: <AccountBalanceIcon className="text-white" />,
-      },
-    },
-    {
-      link: "/",
-      name: "Logout",
-      icon: {
-        desktop: (
-          <PowerSettingsNewIcon className="text-white" fontSize="small" />
-        ),
-        mobile: <PowerSettingsNewIcon className="text-white" />,
-      },
-    },
+    }
   ];
   return (
     <Fragment>
@@ -268,14 +212,6 @@ function NavBar(props) {
             alignItems="center"
             width="100%"
           >
-            {isWidthUp("sm", width) && (
-              <Box mr={3}>
-                <Balance
-                  balance={2573}
-                  openAddBalanceDialog={openAddBalanceDialog}
-                />
-              </Box>
-            )}
             <MessagePopperButton messages={messages} />
             <ListItem
               disableGutters
@@ -296,14 +232,11 @@ function NavBar(props) {
               )}
             </ListItem>
           </Box>
-          <IconButton
-            onClick={openDrawer}
-            color="primary"
-            aria-label="Open Sidedrawer"
-          >
-            <SupervisorAccountIcon />
-          </IconButton>
-          <SideDrawer open={isSideDrawerOpen} onClose={closeDrawer} />
+          <Link
+                to="/"
+              >
+            <PowerSettingsNewIcon />
+          </Link>
         </Toolbar>
       </AppBar>
       <Hidden xsDown>
@@ -375,7 +308,6 @@ NavBar.propTypes = {
   selectedTab: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
-  openAddBalanceDialog: PropTypes.func.isRequired,
 };
 
 export default withWidth()(withStyles(styles, { withTheme: true })(NavBar));
