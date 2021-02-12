@@ -60,11 +60,11 @@ function NavBar(props) {
       name: "Blog",
       icon: <BookIcon className="text-white" />
     },
-    // {
-    //   onClick: () => window.location.href = "https://docs.togglee.com",
-    //   name: "Documentation",
-    //   icon: <BookIcon className="text-white" />
-    // },
+    {
+      onClick: () => window.location.href = "https://docs.togglee.com",
+      name: "Documentation",
+      icon: <BookIcon className="text-white" />
+    },
     {
       name: "Register",
       onClick: openRegisterDialog,
