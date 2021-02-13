@@ -13,6 +13,7 @@ import FormDialog from "../../../shared/components/FormDialog";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../../../shared/components/VisibilityPasswordTextField";
+import { createUser } from "../../../../services/user";
 
 const styles = (theme) => ({
   link: {
@@ -37,6 +38,7 @@ function RegisterDialog(props) {
   const [hasTermsOfServiceError, setHasTermsOfServiceError] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const registerTermsCheckbox = useRef();
+  const registerUser = useRef();
   const registerPassword = useRef();
   const registerPasswordRepeat = useRef();
 
@@ -53,9 +55,10 @@ function RegisterDialog(props) {
     }
     setStatus(null);
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
+    createUser(registerUser.current.value, registerPassword.current.value)
+      .then((result) =>  result.success? setStatus("accountCreated") : setStatus("errorCreatingAccount"))
+      .catch(err => setStatus("errorCreatingAccount"))
+      .finally(() => setIsLoading(false));
   }, [
     setIsLoading,
     setStatus,
@@ -63,6 +66,7 @@ function RegisterDialog(props) {
     registerPassword,
     registerPasswordRepeat,
     registerTermsCheckbox,
+    registerUser,
   ]);
 
   return (
@@ -86,6 +90,7 @@ function RegisterDialog(props) {
             fullWidth
             error={status === "invalidEmail"}
             label="Email Address"
+            inputRef={registerUser}
             autoFocus
             autoComplete="off"
             type="email"
@@ -211,9 +216,9 @@ function RegisterDialog(props) {
               We have created your account. Please click on the link in the
               email we have sent to you before logging in.
             </HighlightedInformation>
-          ) : (
+          ) : status === "errorCreatingAccount"  && (
             <HighlightedInformation>
-              Registration is disabled until we go live.
+              Something went wrong please contact us or try to create your account again.
             </HighlightedInformation>
           )}
         </Fragment>

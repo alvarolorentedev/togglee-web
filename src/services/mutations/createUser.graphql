@@ -1,0 +1,1 @@
+mutation($email: String!, $password: String!){ createUser(email: $email, password: $password) { success } }

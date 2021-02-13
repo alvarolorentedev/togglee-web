@@ -3,11 +3,11 @@ import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import theme from "./theme";
 import GlobalStyles from "./GlobalStyles";
-import Pace from "./shared/components/Pace";
+import Pace from "./views/shared/components/Pace";
 
-const LoggedInComponent = lazy(() => import("./logged_in/components/Main"));
+const LoggedInComponent = lazy(() => import("./views/logged_in/components/Main"));
 
-const LoggedOutComponent = lazy(() => import("./logged_out/components/Main"));
+const LoggedOutComponent = lazy(() => import("./views/logged_out/components/Main"));
 
 function App() {
   return (
