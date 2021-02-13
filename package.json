@@ -49,7 +49,7 @@
   },
   "scripts": {
     "start": "REACT_APP_SERVICE_URL=http://localhost:8080 REACT_APP_SERVICE_USERNAME=admin REACT_APP_SERVICE_PASSWORD=supersecret react-scripts start",
-    "build": "REACT_APP_SERVICE_URL=hhttps://togglee.herokuapp.com REACT_APP_SERVICE_USERNAME=admin REACT_APP_SERVICE_PASSWORD=supersecret react-scripts build && rm -rf docs && mv build docs && echo www.togglee.com >> docs/CNAME",
+    "build": "REACT_APP_SERVICE_URL=https://togglee.herokuapp.com REACT_APP_SERVICE_USERNAME=admin REACT_APP_SERVICE_PASSWORD=supersecret react-scripts build && rm -rf docs && mv build docs && echo www.togglee.com >> docs/CNAME",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -15,11 +15,7 @@ const settings = {
 export const createUser = async (
   email,
   password
-) => {
-    console.log(process.env.REACT_APP_SERVICE_URL)
-    console.log(process.env.REACT_APP_SERVICE_USERNAME)
-    console.log(process.env.REACT_APP_SERVICE_PASSWORD)
-    return (await axios.post(
+) => (await axios.post(
       `${process.env.REACT_APP_SERVICE_URL}/graphql`,
       {
         query: queryCreateUserMutation.loc.source.body,
@@ -31,4 +27,3 @@ export const createUser = async (
       settings
     )
   ).data.data.createUser;
-}
