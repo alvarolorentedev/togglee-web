@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { loader } from 'graphql.macro';
 
-const queryCreateUserMutation = loader('./mutations/createUser.graphql');
+const mutationCreateUser = loader('./mutations/createUser.graphql');
+const mutationLoginUser = loader('./mutations/loginUser.graphql');
 
 const settings = {
   headers: {
@@ -11,14 +12,13 @@ const settings = {
   },
 };
 
-/* eslint-disable-next-line import/prefer-default-export */
 export const createUser = async (
   email,
   password
 ) => (await axios.post(
       `${process.env.REACT_APP_SERVICE_URL}/graphql`,
       {
-        query: queryCreateUserMutation.loc.source.body,
+        query: mutationCreateUser.loc.source.body,
         variables: {
           email,
           password,
@@ -27,3 +27,19 @@ export const createUser = async (
       settings
     )
   ).data.data.createUser;
+  
+export const loginUser = async (
+  email,
+  password
+) => (await axios.post(
+      `${process.env.REACT_APP_SERVICE_URL}/graphql`,
+      {
+        query: mutationLoginUser.loc.source.body,
+        variables: {
+          email,
+          password,
+        },
+      },
+      settings
+    )
+  ).data.data.validateCredentialsUser;

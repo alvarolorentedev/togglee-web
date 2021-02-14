@@ -14,6 +14,7 @@ import FormDialog from "../../../shared/components/FormDialog";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import ButtonCircularProgress from "../../../shared/components/ButtonCircularProgress";
 import VisibilityPasswordTextField from "../../../shared/components/VisibilityPasswordTextField";
+import { loginUser } from "../../../../services/user";
 
 const styles = (theme) => ({
   forgotPassword: {
@@ -53,21 +54,10 @@ function LoginDialog(props) {
   const login = useCallback(() => {
     setIsLoading(true);
     setStatus(null);
-    if (loginEmail.current.value !== "test@web.com") {
-      setTimeout(() => {
-        setStatus("invalidEmail");
-        setIsLoading(false);
-      }, 1500);
-    } else if (loginPassword.current.value !== "HaRzwc") {
-      setTimeout(() => {
-        setStatus("invalidPassword");
-        setIsLoading(false);
-      }, 1500);
-    } else {
-      setTimeout(() => {
-        history.push("/c/dashboard");
-      }, 150);
-    }
+    loginUser(loginEmail.current.value, loginPassword.current.value)
+    .then(result =>  result.success? history.push("/c/dashboard") : setStatus("invalidEmailPassword"))
+    .catch(_ => setStatus("errorLoginAccount"))
+    .finally(setIsLoading(false))
   }, [setIsLoading, loginEmail, loginPassword, history, setStatus]);
 
   return (
@@ -144,12 +134,10 @@ function LoginDialog(props) {
                 We have send instructions on how to reset your password to your
                 email address
               </HighlightedInformation>
-            ) : (<></>
-              // <HighlightedInformation>
-              //   Email is: <b>test@web.com</b>
-              //   <br />
-              //   Password is: <b>HaRzwc</b>
-              // </HighlightedInformation>
+            ) : (
+              <HighlightedInformation>
+                Login is disabled until we go live.
+              </HighlightedInformation>
             )}
           </Fragment>
         }

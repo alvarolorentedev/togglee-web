@@ -57,7 +57,7 @@ function RegisterDialog(props) {
     setIsLoading(true);
     createUser(registerUser.current.value, registerPassword.current.value)
       .then((result) =>  result.success? setStatus("accountCreated") : setStatus("errorCreatingAccount"))
-      .catch(err => setStatus("errorCreatingAccount"))
+      .catch(_ => setStatus("errorCreatingAccount"))
       .finally(() => setIsLoading(false));
   }, [
     setIsLoading,
@@ -216,11 +216,16 @@ function RegisterDialog(props) {
               We have created your account. Please click on the link in the
               email we have sent to you before logging in.
             </HighlightedInformation>
-          ) : status === "errorCreatingAccount"  && (
-            <HighlightedInformation>
+          ) : status === "errorCreatingAccount" 
+            ? (<HighlightedInformation>
               Something went wrong please contact us or try to create your account again.
-            </HighlightedInformation>
-          )}
+            </HighlightedInformation>)
+            : (
+              <HighlightedInformation>
+                Registration is disabled until we go live.
+              </HighlightedInformation>
+              )
+          }
         </Fragment>
       }
       actions={
