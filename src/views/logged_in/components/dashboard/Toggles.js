@@ -15,6 +15,7 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  FormControl,
   withStyles
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -22,6 +23,7 @@ import EnhancedTableHead from "../../../shared/components/EnhancedTableHead";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
+
 
 const styles = theme => ({
   tableWrapper: {
@@ -104,7 +106,16 @@ function SubscriptionTable(props) {
                     {toggle.name}
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {toggle.type}
+                    <FormControl variant="outlined">
+                      <Select required
+                        labelId="operation-drop-down"
+                        value={toggle.type}
+                        // onChange={handleChange}
+                      >
+                        <MenuItem value={"release"}>release</MenuItem>
+                        <MenuItem value={"context"}>context</MenuItem>
+                      </Select>
+                    </FormControl>
                   </TableCell>
                   <TableCell component="th" scope="row">
                     {toggle.type === "release"
@@ -119,22 +130,23 @@ function SubscriptionTable(props) {
                               : "Activate Toggle"
                           }}
                         />)
-                      : <>
-                      <TextField required label="Field" />
-                      <InputLabel id="operation-drop-down">Operation</InputLabel>
-                      <Select required
-                        labelId="operation-drop-down"
-                        // value={age}
-                        // onChange={handleChange}
-                      >
-                        <MenuItem value={"eq"}>equal</MenuItem>
-                        <MenuItem value={"ne"}>not equal</MenuItem>
-                        <MenuItem value={"gt"}>grater than</MenuItem>
-                        <MenuItem value={"ge"}>grater equal</MenuItem>
-                        <MenuItem value={"lt"}>lower than</MenuItem>
-                        <MenuItem value={"le"}>lower equal</MenuItem>
-                      </Select>
-                      <TextField required label="Value" />
+                      : (<div>
+                          <TextField variant="outlined" required label="Field" />
+                        <FormControl variant="outlined">
+                          <Select required
+                            labelId="operation-drop-down"
+                            // value={age}
+                            // onChange={handleChange}
+                          >
+                            <MenuItem value={"eq"}>equal</MenuItem>
+                            <MenuItem value={"ne"}>not equal</MenuItem>
+                            <MenuItem value={"gt"}>grater than</MenuItem>
+                            <MenuItem value={"ge"}>grater equal</MenuItem>
+                            <MenuItem value={"lt"}>lower than</MenuItem>
+                            <MenuItem value={"le"}>lower equal</MenuItem>
+                          </Select>
+                        </FormControl>
+                          <TextField variant="outlined" required label="Value" />
                       <IconButton
                       className={classes.iconButton}
                       onClick={() => {
@@ -144,7 +156,7 @@ function SubscriptionTable(props) {
                     >
                       <DeleteIcon className={classes.blackIcon} />
                     </IconButton>
-                    </>}
+                    </div>)}
                   </TableCell>
                   <TableCell component="th" scope="row">
                     { 
