@@ -6,17 +6,22 @@ import {
   Typography,
   AccordionDetails,
   Table,
-
+  Switch,
   IconButton,
   TableBody,
   TableCell,
   TableRow,
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
   withStyles
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import EnhancedTableHead from "../../../shared/components/EnhancedTableHead";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import DeleteIcon from "@material-ui/icons/Delete";
+import AddIcon from "@material-ui/icons/Add";
 
 const styles = theme => ({
   tableWrapper: {
@@ -103,10 +108,59 @@ function SubscriptionTable(props) {
                   </TableCell>
                   <TableCell component="th" scope="row">
                     {toggle.type === "release"
-                      ? (toggle.value ? "On" : "Off")
-                      : ""}
+                      ? (
+                        <Switch
+                          color="secondary"
+                          checked={toggle.value}
+                          onClick={console.log}
+                          inputProps={{
+                            "aria-label": toggle.value
+                              ? "Deactivate Toggle"
+                              : "Activate Toggle"
+                          }}
+                        />)
+                      : <>
+                      <TextField required label="Field" />
+                      <InputLabel id="operation-drop-down">Operation</InputLabel>
+                      <Select required
+                        labelId="operation-drop-down"
+                        // value={age}
+                        // onChange={handleChange}
+                      >
+                        <MenuItem value={"eq"}>equal</MenuItem>
+                        <MenuItem value={"ne"}>not equal</MenuItem>
+                        <MenuItem value={"gt"}>grater than</MenuItem>
+                        <MenuItem value={"ge"}>grater equal</MenuItem>
+                        <MenuItem value={"lt"}>lower than</MenuItem>
+                        <MenuItem value={"le"}>lower equal</MenuItem>
+                      </Select>
+                      <TextField required label="Value" />
+                      <IconButton
+                      className={classes.iconButton}
+                      onClick={() => {
+                        handleDeleteTargetDialogOpen(index);
+                      }}
+                      aria-label="Delete"
+                    >
+                      <DeleteIcon className={classes.blackIcon} />
+                    </IconButton>
+                    </>}
                   </TableCell>
                   <TableCell component="th" scope="row">
+                    { 
+                      toggle.type === "context" 
+                      && <>
+                        <IconButton
+                          className={classes.iconButton}
+                          onClick={() => {
+                            // handleDeleteTargetDialogOpen(index);
+                          }}
+                          aria-label="Delete"
+                        >
+                          <AddIcon className={classes.blackIcon} />
+                        </IconButton>
+                      </>
+                    }
                     <IconButton
                       className={classes.iconButton}
                       onClick={() => {
