@@ -14,7 +14,6 @@ import {
   TextField,
   Select,
   MenuItem,
-  InputLabel,
   FormControl,
   withStyles
 } from "@material-ui/core";
@@ -74,6 +73,37 @@ const rows = [
   }
 ];
 
+const RELEASE_TOGGLE = "release"
+const CONTEXT_TOGGLE = "context"
+
+const TOGGLE_TYPES=[RELEASE_TOGGLE, CONTEXT_TOGGLE]
+const CONTEXT_TOGGLE_OPERATIONS=[
+  {
+  name: "equal",
+  id: "eq",
+  },
+  {
+  name: "not equal",
+  id: "ne",
+  },
+  {
+  name: "grater than",
+  id: "gt",
+  },
+  {
+  name: "grater equal",
+  id: "ge",
+  },
+  {
+  name: "lower than",
+  id: "lt",
+  },
+  {
+  name: "lower equal",
+  id: "le",
+  },
+]
+
 function SubscriptionTable(props) {
   const { toggles, classes } = props;
 
@@ -86,7 +116,7 @@ function SubscriptionTable(props) {
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography>Toggles Project Awesome</Typography>
+        <Typography>Toggles</Typography>
       </AccordionSummary>
       <AccordionDetails className={classes.dBlock}>
       {
@@ -103,7 +133,7 @@ function SubscriptionTable(props) {
                     scope="row"
                     className={classes.firstData}
                   >
-                    {toggle.name}
+                    <TextField variant="outlined" required label="Field" value={toggle.name}/>
                   </TableCell>
                   <TableCell component="th" scope="row">
                     <FormControl variant="outlined">
@@ -118,7 +148,7 @@ function SubscriptionTable(props) {
                     </FormControl>
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {toggle.type === "release"
+                    {toggle.type === RELEASE_TOGGLE
                       ? (
                         <Switch
                           color="secondary"
@@ -130,33 +160,33 @@ function SubscriptionTable(props) {
                               : "Activate Toggle"
                           }}
                         />)
-                      : (<div>
-                          <TextField variant="outlined" required label="Field" />
-                        <FormControl variant="outlined">
-                          <Select required
-                            labelId="operation-drop-down"
-                            // value={age}
-                            // onChange={handleChange}
-                          >
-                            <MenuItem value={"eq"}>equal</MenuItem>
-                            <MenuItem value={"ne"}>not equal</MenuItem>
-                            <MenuItem value={"gt"}>grater than</MenuItem>
-                            <MenuItem value={"ge"}>grater equal</MenuItem>
-                            <MenuItem value={"lt"}>lower than</MenuItem>
-                            <MenuItem value={"le"}>lower equal</MenuItem>
-                          </Select>
-                        </FormControl>
-                          <TextField variant="outlined" required label="Value" />
-                      <IconButton
-                      className={classes.iconButton}
-                      onClick={() => {
-                        handleDeleteTargetDialogOpen(index);
-                      }}
-                      aria-label="Delete"
-                    >
-                      <DeleteIcon className={classes.blackIcon} />
-                    </IconButton>
-                    </div>)}
+                      : toggle.conditions.map((condition) => (<div>
+                            <TextField variant="outlined" required label="Field" value={condition.field}/>
+                            <FormControl variant="outlined">
+                              <Select required
+                                labelId="operation-drop-down"
+                                value={condition.operation}
+                                // onChange={handleChange}
+                              >
+                                {
+                                  CONTEXT_TOGGLE_OPERATIONS.map((operation) => (
+                                    <MenuItem value={operation.id}>{operation.name}</MenuItem>
+                                  ))
+                                }
+                              </Select>
+                            </FormControl>
+                            <TextField variant="outlined" required label="Value" value={condition.value}/>
+                        <IconButton
+                        className={classes.iconButton}
+                        onClick={() => {
+                          handleDeleteTargetDialogOpen(index);
+                        }}
+                        aria-label="Delete"
+                      >
+                        <DeleteIcon className={classes.blackIcon} />
+                      </IconButton>
+                      </div>))
+                      }
                   </TableCell>
                   <TableCell component="th" scope="row">
                     { 

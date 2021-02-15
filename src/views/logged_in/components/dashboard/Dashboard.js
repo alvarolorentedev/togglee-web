@@ -25,6 +25,11 @@ function Dashboard(props) {
         isAccountActivated={isAccountActivated}
         toggleAccountActivation={toggleAccountActivation}
       />
+      <Box mt={4}>
+        <Typography variant="subtitle1" gutterBottom>
+          Your Projects
+        </Typography>
+      </Box>
       <Toggles
         pushMessageToSnackbar={pushMessageToSnackbar}
         toggles={[
