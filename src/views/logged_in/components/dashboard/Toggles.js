@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {
   Accordion,
@@ -15,6 +15,7 @@ import {
   Select,
   MenuItem,
   FormControl,
+  Fab,
   withStyles
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -22,6 +23,7 @@ import EnhancedTableHead from "../../../shared/components/EnhancedTableHead";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
+import { v4 as uuid } from 'uuid';
 
 
 const styles = theme => ({
@@ -104,14 +106,12 @@ const CONTEXT_TOGGLE_OPERATIONS=[
   },
 ]
 
-function SubscriptionTable(props) {
-  const { toggles, classes } = props;
+function TogglesTable(props) {
+  const { toggles, onUpdate, onCreate, onDelete, classes } = props;
 
 
-  const handleDeleteTargetDialogOpen = useCallback(
-    (row) => {console.log("deleting row");},
-    []
-  );
+  const updateCondition = (toggleIndex, conditions, index, value) =>
+    onUpdate(toggleIndex, "conditions", conditions.map((condition, indexToChange) => index === indexToChange ? value : condition))
 
   return (
     <Accordion>
@@ -127,23 +127,31 @@ function SubscriptionTable(props) {
           <TableBody>
             {toggles
               .map((toggle, index) => (
-                <TableRow hover tabIndex={-1} key={index}>
+                <TableRow key={`toggle_${index}`} hover tabIndex={-1}>
                   <TableCell
                     component="th"
                     scope="row"
                     className={classes.firstData}
                   >
-                    <TextField variant="outlined" required label="Field" value={toggle.name}/>
+                    <TextField required
+                      variant="outlined"
+                      label="Field" 
+                      value={toggle.name} 
+                      onChange={(event) => onUpdate(index, "name", event.target.value)}
+                    />
                   </TableCell>
                   <TableCell component="th" scope="row">
                     <FormControl variant="outlined">
                       <Select required
                         labelId="operation-drop-down"
                         value={toggle.type}
-                        // onChange={handleChange}
+                        onChange={(event) => onUpdate(index, "type", event.target.value)}
                       >
-                        <MenuItem value={"release"}>release</MenuItem>
-                        <MenuItem value={"context"}>context</MenuItem>
+                        {
+                          TOGGLE_TYPES.map(toggleType => (
+                            <MenuItem key={`toggleType${uuid()}`} value={toggleType}>{toggleType}</MenuItem>
+                          ))
+                        }
                       </Select>
                     </FormControl>
                   </TableCell>
@@ -153,33 +161,33 @@ function SubscriptionTable(props) {
                         <Switch
                           color="secondary"
                           checked={toggle.value}
-                          onClick={console.log}
+                          onChange={event => onUpdate(index, "value", event.target.checked)}
                           inputProps={{
                             "aria-label": toggle.value
                               ? "Deactivate Toggle"
                               : "Activate Toggle"
                           }}
                         />)
-                      : toggle.conditions.map((condition) => (<div>
-                            <TextField variant="outlined" required label="Field" value={condition.field}/>
+                      : toggle.conditions.map((condition, indexCondition) => (<div key={`toggle_${index}_condition_${indexCondition}`}>
+                            <TextField  variant="outlined" required label="Field" value={condition.field} onChange={event => updateCondition(index, toggle.conditions, indexCondition, {...condition, field: event.target.value})}/>
                             <FormControl variant="outlined">
                               <Select required
                                 labelId="operation-drop-down"
                                 value={condition.operation}
-                                // onChange={handleChange}
+                                onChange={event => updateCondition(index, toggle.conditions, indexCondition, {...condition, operation: event.target.value})}
                               >
                                 {
                                   CONTEXT_TOGGLE_OPERATIONS.map((operation) => (
-                                    <MenuItem value={operation.id}>{operation.name}</MenuItem>
+                                    <MenuItem key={`OperationType${uuid()}`} value={operation.id}>{operation.name}</MenuItem>
                                   ))
                                 }
                               </Select>
                             </FormControl>
-                            <TextField variant="outlined" required label="Value" value={condition.value}/>
+                            <TextField variant="outlined" required label="Value" value={condition.value} onChange={event => updateCondition(index, toggle.conditions, indexCondition, {...condition, value: event.target.value})}/>
                         <IconButton
                         className={classes.iconButton}
                         onClick={() => {
-                          handleDeleteTargetDialogOpen(index);
+                          onUpdate(index, "conditions", toggle.conditions.filter((_, indexDelete) => indexCondition !== indexDelete));
                         }}
                         aria-label="Delete"
                       >
@@ -195,7 +203,7 @@ function SubscriptionTable(props) {
                         <IconButton
                           className={classes.iconButton}
                           onClick={() => {
-                            // handleDeleteTargetDialogOpen(index);
+                            onUpdate(index, "conditions", [...toggle.conditions, { operation: "eq"}]);
                           }}
                           aria-label="Delete"
                         >
@@ -205,9 +213,7 @@ function SubscriptionTable(props) {
                     }
                     <IconButton
                       className={classes.iconButton}
-                      onClick={() => {
-                        handleDeleteTargetDialogOpen(index);
-                      }}
+                      onClick={() => onDelete(index)}
                       aria-label="Delete"
                     >
                       <DeleteIcon className={classes.blackIcon} />
@@ -222,15 +228,18 @@ function SubscriptionTable(props) {
           No toggles defined yet.
         </HighlightedInformation>)
       }
+      <Fab color="primary" aria-label="add" onClick={onCreate}>
+        <AddIcon />
+      </Fab>
       </AccordionDetails>
     </Accordion>
   )
 }
 
-SubscriptionTable.propTypes = {
+TogglesTable.propTypes = {
   theme: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   toggles: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(SubscriptionTable);
+export default withStyles(styles, { withTheme: true })(TogglesTable);
