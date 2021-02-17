@@ -15,7 +15,7 @@ import {
   Select,
   MenuItem,
   FormControl,
-  Fab,
+  Button,
   withStyles
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -23,6 +23,7 @@ import EnhancedTableHead from "../../../shared/components/EnhancedTableHead";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
+import LoopIcon from "@material-ui/icons/Loop";
 import { v4 as uuid } from 'uuid';
 
 
@@ -107,7 +108,7 @@ const CONTEXT_TOGGLE_OPERATIONS=[
 ]
 
 function TogglesTable(props) {
-  const { toggles, onUpdate, onCreate, onDelete, classes } = props;
+  const { toggles, onUpdate, onCreate, onSend, onDelete, classes } = props;
 
 
   const updateCondition = (toggleIndex, conditions, index, value) =>
@@ -119,6 +120,10 @@ function TogglesTable(props) {
         <Typography>Toggles</Typography>
       </AccordionSummary>
       <AccordionDetails className={classes.dBlock}>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          onSend();
+        }}>
       {
         toggles.length > 0
         ? (
@@ -228,9 +233,13 @@ function TogglesTable(props) {
           No toggles defined yet.
         </HighlightedInformation>)
       }
-      <Fab color="primary" aria-label="add" onClick={onCreate}>
-        <AddIcon />
-      </Fab>
+      <Button variant="contained" color="primary" aria-label="add" onClick={onCreate}>
+      <AddIcon/> Add
+      </Button>
+      <Button type="submit" variant="contained" color="primary" aria-label="add">
+      <LoopIcon/> Update
+      </Button>
+      </form>
       </AccordionDetails>
     </Accordion>
   )

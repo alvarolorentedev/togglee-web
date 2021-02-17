@@ -31,24 +31,7 @@ function Dashboard(props) {
   }
   useEffect(selectDashboard, [selectDashboard]);
   useEffect(() => {
-    setToggles([
-      { 
-        name: "myawesometoggle",
-        type: "release",
-        value: true,
-        conditions: []
-      },
-      { 
-        name: "myotherawesometoggle",
-        type: "context",
-        value: false,
-        conditions: [{
-          field: "a",
-          value: "b",
-          operation: "eq"
-        }]
-      },
-  ])
+    setToggles([])
   }, []);
 
   return (
@@ -73,6 +56,7 @@ function Dashboard(props) {
         onUpdate={updateToggle}
         onCreate={onCreateToggle}
         onDelete={onDeleteToggle}
+        onSend={() => console.log("send")}
       />
     </Fragment>
   );
