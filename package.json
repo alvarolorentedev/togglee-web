@@ -48,10 +48,14 @@
     "@testing-library/user-event": "^12.6.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "REACT_APP_SERVICE_URL=http://localhost:8080 REACT_APP_SERVICE_USERNAME=admin REACT_APP_SERVICE_PASSWORD=supersecret react-scripts start",
-    "build": "REACT_APP_SERVICE_URL=https://togglee.herokuapp.com REACT_APP_SERVICE_USERNAME=admin REACT_APP_SERVICE_PASSWORD=supersecret react-scripts build && rm -rf docs && mv build docs && echo www.togglee.com >> docs/CNAME",
+    "build": "REACT_APP_SERVICE_URL=https://togglee.herokuapp.com REACT_APP_SERVICE_USERNAME=admin REACT_APP_SERVICE_PASSWORD=supersecret react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:coverage": "CI=true npm test -- --coverage --collectCoverageFrom=src/**/*.{js,jsx} --collectCoverageFrom=!src/**/*.stories.js",
+    "report:complexity": "cr -c .complexrc src"
   },
   "eslintConfig": {
     "extends": "react-app"
