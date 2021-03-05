@@ -18,12 +18,8 @@ function App() {
         <Pace color={theme.palette.primary.light} />
         <Suspense fallback={<Fragment />}>
           <Switch>
-            <Route path="/c">
-              <LoggedInComponent />
-            </Route>
-            <Route>
-              <LoggedOutComponent />
-            </Route>
+            <Route path="/c" component={LoggedInComponent} />
+            <Route component={LoggedOutComponent} />
           </Switch>
         </Suspense>
       </MuiThemeProvider>

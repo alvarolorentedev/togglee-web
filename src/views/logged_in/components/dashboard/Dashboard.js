@@ -6,10 +6,12 @@ import Toggles from "./Toggles";
 
 function Dashboard(props) {
   const {
+    userId,
     selectDashboard,
     pushMessageToSnackbar,
     isAccountActivated,
-    toggleAccountActivation,
+    accountActivation,
+    projectUpsert,
   } = props;
 
   const [toggles, setToggles] = useState([]);
@@ -43,7 +45,7 @@ function Dashboard(props) {
       </Box>
       <AccountInformationArea
         isAccountActivated={isAccountActivated}
-        toggleAccountActivation={toggleAccountActivation}
+        accountActivation={accountActivation}
       />
       <Box mt={4}>
         <Typography variant="subtitle1" gutterBottom>
@@ -56,17 +58,19 @@ function Dashboard(props) {
         onUpdate={updateToggle}
         onCreate={onCreateToggle}
         onDelete={onDeleteToggle}
-        onSend={() => console.log("send")}
+        onSend={() => projectUpsert(userId, "Default", toggles)}
       />
     </Fragment>
   );
 }
 
 Dashboard.propTypes = {
+  userId: PropTypes.string,
   pushMessageToSnackbar: PropTypes.func,
   selectDashboard: PropTypes.func.isRequired,
   isAccountActivated: PropTypes.bool.isRequired,
-  toggleAccountActivation: PropTypes.func,
+  accountActivation: PropTypes.func,
+  projectUpsert: PropTypes.func,
 };
 
 export default Dashboard;

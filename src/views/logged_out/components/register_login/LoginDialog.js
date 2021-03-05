@@ -55,7 +55,7 @@ function LoginDialog(props) {
     setIsLoading(true);
     setStatus(null);
     loginUser(loginEmail.current.value, loginPassword.current.value)
-    .then(result =>  result.success? history.push("/c/dashboard") : setStatus("invalidEmailPassword"))
+    .then(result =>  result.success? history.push({pathname: "/c/dashboard/", state:{ userId: result.id }}) : setStatus("invalidEmailPassword"))
     .catch(_ => setStatus("errorLoginAccount"))
     .finally(setIsLoading(false))
   }, [setIsLoading, loginEmail, loginPassword, history, setStatus]);

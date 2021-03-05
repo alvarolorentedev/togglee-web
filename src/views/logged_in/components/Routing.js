@@ -42,9 +42,13 @@ const styles = (theme) => ({
 
 function Routing(props) {
   const {
+    userId,
     classes,
     pushMessageToSnackbar,
     selectDashboard,
+    isAccountActivated,
+    accountActivation,
+    projectUpsert,
   } = props;
   return (
     <div className={classes.wrapper}>
@@ -54,6 +58,10 @@ function Routing(props) {
           component={Dashboard}
           pushMessageToSnackbar={pushMessageToSnackbar}
           selectDashboard={selectDashboard}
+          isAccountActivated={isAccountActivated}
+          accountActivation={accountActivation}
+          projectUpsert={projectUpsert}
+          userId={userId}
         />
       </Switch>
     </div>
@@ -61,9 +69,13 @@ function Routing(props) {
 }
 
 Routing.propTypes = {
+  userId: PropTypes.string,
   classes: PropTypes.object.isRequired,
   pushMessageToSnackbar: PropTypes.func,
   selectDashboard: PropTypes.func.isRequired,
+  isAccountActivated: PropTypes.bool.isRequired,
+  accountActivation: PropTypes.func,
+  projectUpsert: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(memo(Routing));

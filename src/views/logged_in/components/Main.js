@@ -7,6 +7,7 @@ import NavBar from "./navigation/NavBar";
 import ConsecutiveSnackbarMessages from "../../shared/components/ConsecutiveSnackbarMessages";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
 import persons from "../dummy_data/persons";
+import { upsertProject } from "../../../services/project";
 
 const styles = (theme) => ({
   main: {
@@ -29,7 +30,7 @@ function shuffle(array) {
 }
 
 function Main(props) {
-  const { classes } = props;
+  const { classes, location } = props;
   const [selectedTab, setSelectedTab] = useState(null);
   const [hasFetchedCardChart, setHasFetchedCardChart] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -97,6 +98,10 @@ function Main(props) {
         <Routing
           pushMessageToSnackbar={pushMessageToSnackbar}
           selectDashboard={selectDashboard}
+          isAccountActivated={() => console.error("Not Implemented")}
+          accountActivation={() => console.error("Not Implemented")}
+          projectUpsert={upsertProject}
+          userId={location.state.userId}
         />
       </main>
     </Fragment>

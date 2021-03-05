@@ -1,0 +1,1 @@
+mutation($name: String!, $owner: String!, $toggles: [Any]!){ upsertProject(name: $name, owner: $owner, toggles: $toggles) { success } }
