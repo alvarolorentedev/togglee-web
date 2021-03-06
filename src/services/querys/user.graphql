@@ -1,0 +1,14 @@
+query($id: String!) {
+    user(id:$id) {
+        id,
+        email,
+        isTest,
+        projects {
+            name,
+            owner,
+            id,
+            isTest,
+            toggles
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   Accordion,
@@ -108,21 +108,42 @@ const CONTEXT_TOGGLE_OPERATIONS=[
 ]
 
 function TogglesTable(props) {
-  const { toggles, onUpdate, onCreate, onSend, onDelete, classes } = props;
+  const { onSend, project, classes } = props;
+  const [toggles, setToggles] = useState([]);
 
+  const onCreate = () => {
+    setToggles([...toggles, {name: undefined,
+      type: "release",
+      conditions: [],
+      value: false}])
+  }
+  const onDelete = (index) => {
+    setToggles(toggles.filter((_, indexDelete) => index !== indexDelete))
+  }
 
+  const onUpdate = (index, field, value) => {
+    const newToggles = toggles
+      .map((toggle, indexToChange) => index === indexToChange 
+                  ? {...toggle, [field]: value } 
+                  : toggle )
+    setToggles(newToggles)
+  }
+
+  useEffect(() => {
+      setToggles(JSON.parse(project.toggles))
+  }, [project]);
   const updateCondition = (toggleIndex, conditions, index, value) =>
     onUpdate(toggleIndex, "conditions", conditions.map((condition, indexToChange) => index === indexToChange ? value : condition))
 
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography>Toggles</Typography>
+        <Typography>{project.name}</Typography>
       </AccordionSummary>
       <AccordionDetails className={classes.dBlock}>
         <form onSubmit={(e) => {
           e.preventDefault();
-          onSend();
+          onSend(toggles);
         }}>
       {
         toggles.length > 0
@@ -248,7 +269,7 @@ function TogglesTable(props) {
 TogglesTable.propTypes = {
   theme: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  toggles: PropTypes.arrayOf(PropTypes.object).isRequired
+  project: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(TogglesTable);

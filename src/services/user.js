@@ -3,6 +3,7 @@ import { loader } from 'graphql.macro';
 
 const mutationCreateUser = loader('./mutations/createUser.graphql');
 const mutationLoginUser = loader('./mutations/loginUser.graphql');
+const queryUser = loader('./querys/user.graphql');
 
 const settings = {
   headers: {
@@ -43,3 +44,17 @@ export const loginUser = async (
       settings
     )
   ).data.data.validateCredentialsUser;
+
+export const getUser = async (
+  id
+) => (await axios.post(
+      `${process.env.REACT_APP_SERVICE_URL}/graphql`,
+      {
+        query: queryUser.loc.source.body,
+        variables: {
+          id,
+        },
+      },
+      settings
+    )
+  ).data.data.user;

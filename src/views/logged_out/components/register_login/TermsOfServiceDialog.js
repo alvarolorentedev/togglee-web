@@ -27,6 +27,8 @@ const styles = theme => ({
   }
 });
 
+
+
 function TermsOfServiceDialog(props) {
   const { classes, onClose, theme } = props;
   return (
@@ -34,147 +36,79 @@ function TermsOfServiceDialog(props) {
       <DialogTitle>Terms and Conditions</DialogTitle>
       <DialogContent>
         <Typography variant="h6" color="primary" paragraph>
-          Introduction
+          Terms
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-          ipsum dolor sit amet.
-        </Typography>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren.
+          By accessing this Website, accessible from www.togglee.com, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site. The materials contained in this Website are protected by copyright and trade mark law.
         </Typography>
         <Typography variant="h6" color="primary" paragraph>
-          Intellectual Property Rights
+          Use License
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        </Typography>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren,
-        </Typography>
-        <Typography variant="h6" color="primary" paragraph>
-          Restrictions
-        </Typography>
-        <Typography paragraph>
-          You are specifically restricted from all of the following:
+        Permission is granted to temporarily download one copy of the materials on togglee's Website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
         </Typography>
         <Typography className={classes.termsConditionsListitem}>
-          - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          - modify or copy the materials;
         </Typography>
         <Typography className={classes.termsConditionsListitem}>
-          - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          - use the materials for any commercial purpose or for any public display;
         </Typography>
         <Typography className={classes.termsConditionsListitem}>
-          - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          - attempt to reverse engineer any software contained on togglee's Website;
         </Typography>
         <Typography className={classes.termsConditionsListitem}>
-          - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          - remove any copyright or other proprietary notations from the materials; or
         </Typography>
         <Typography className={classes.termsConditionsListitem}>
-          - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
-        </Typography>
-        <Typography className={classes.termsConditionsListitem}>
-          - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        </Typography>
-        <Typography className={classes.termsConditionsListitem}>
-          - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          - transferring the materials to another person or "mirror" the materials on any other server.
         </Typography>
         <Typography className={classes.termsConditionsListitem} paragraph>
-          - Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren,
+          - share personal account with another user, to overcome the usage of a diferent plan in case of teams, companies and organizations.
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          This will let togglee to terminate upon violations of any of these restrictions. Upon termination, your viewing right will also be terminated and you should destroy any downloaded materials in your possession whether it is printed or electronic format. These Terms of Service has been created with the help of the Terms Of Service Generator and the Privacy Policy Generator.
         </Typography>
         <Typography variant="h6" color="primary" paragraph>
-          Your Content
+          Disclaimer
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        </Typography>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          All the materials on togglee’s Website are provided "as is". togglee makes no warranties, may it be expressed or implied, therefore negates all other warranties. Furthermore, togglee does not make any representations concerning the accuracy or reliability of the use of the materials on its Website or otherwise relating to such materials or any sites linked to this Website.
         </Typography>
         <Typography variant="h6" color="primary" paragraph>
-          No warranties
+          Limitations
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
+          togglee or its suppliers will not be hold accountable for any damages that will arise with the use or inability to use the materials on togglee’s Website, even if togglee or an authorize representative of this Website has been notified, orally or written, of the possibility of such damage. Some jurisdiction does not allow limitations on implied warranties or limitations of liability for incidental damages, these limitations may not apply to you.
         </Typography>
         <Typography variant="h6" color="primary" paragraph>
-          Limitation of liability
+          Revisions and Errata
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          The materials appearing on togglee’s Website may include technical, typographical, or photographic errors. togglee will not promise that any of the materials in this Website are accurate, complete, or current. togglee may change the materials contained on its Website at any time without notice. togglee does not make any commitment to update the materials.
         </Typography>
         <Typography variant="h6" color="primary" paragraph>
-          Indemnification
+          Links
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          togglee has not reviewed all of the sites linked to its Website and is not responsible for the contents of any such linked site. The presence of any link does not imply endorsement by togglee of the site. The use of any linked website is at the user’s own risk.
         </Typography>
         <Typography variant="h6" color="primary" paragraph>
-          Severability
+          Site Terms of Use Modifications
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
+        togglee may revise these Terms of Use for its Website at any time without prior notice. By using this Website, you are agreeing to be bound by the current version of these Terms and Conditions of Use.
         </Typography>
         <Typography variant="h6" color="primary" paragraph>
-          Variation of Terms
+          Your Privacy
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          Please read <a href="https://www.freeprivacypolicy.com/live/125cbb54-8ff3-4cfa-9fa1-4522f131b695">our Privacy Policy.</a>
         </Typography>
         <Typography variant="h6" color="primary" paragraph>
-          Assignment
+          Governing Law
         </Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        </Typography>
-        <Typography variant="h6" color="primary" paragraph>
-          Entire Agreement
-        </Typography>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        </Typography>
-        <Typography variant="h6" color="primary" paragraph>
-          Governing Law & Jurisdiction
-        </Typography>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          Any claim related to togglee's Website shall be governed by the laws of es without regards to its conflict of law provisions.
         </Typography>
       </DialogContent>
       <DialogActions className={classes.dialogActions}>

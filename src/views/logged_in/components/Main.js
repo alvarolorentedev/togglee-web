@@ -8,6 +8,7 @@ import ConsecutiveSnackbarMessages from "../../shared/components/ConsecutiveSnac
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
 import persons from "../dummy_data/persons";
 import { upsertProject } from "../../../services/project";
+import { getUser } from "../../../services/user";
 
 const styles = (theme) => ({
   main: {
@@ -34,6 +35,7 @@ function Main(props) {
   const [selectedTab, setSelectedTab] = useState(null);
   const [hasFetchedCardChart, setHasFetchedCardChart] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [user, setUser] = useState(null);
   const [pushMessageToSnackbar, setPushMessageToSnackbar] = useState(null);
 
   const fetchRandomMessages = useCallback(() => {
@@ -59,6 +61,10 @@ function Main(props) {
     setMessages(messages);
   }, [setMessages]);
 
+  const fetchUserData = useCallback(async() => {
+    setUser( await getUser(location.state.userId))
+  }, [setUser, location]);
+
   const selectDashboard = useCallback(() => {
     smoothScrollTop();
     document.title = "Toggle - Dashboard";
@@ -80,16 +86,19 @@ function Main(props) {
   );
 
   useEffect(() => {
+    fetchUserData();
     fetchRandomMessages();
   }, [
     fetchRandomMessages,
+    fetchUserData,
   ]);
 
   return (
-    <Fragment>
+    user && <Fragment>
       <NavBar
         selectedTab={selectedTab}
         messages={messages}
+        user={user}
       />
       <ConsecutiveSnackbarMessages
         getPushMessageFromChild={getPushMessageFromChild}
@@ -101,7 +110,7 @@ function Main(props) {
           isAccountActivated={() => console.error("Not Implemented")}
           accountActivation={() => console.error("Not Implemented")}
           projectUpsert={upsertProject}
-          userId={location.state.userId}
+          user={user}
         />
       </main>
     </Fragment>

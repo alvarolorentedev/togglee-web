@@ -1,44 +1,29 @@
 import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Typography, Box } from "@material-ui/core";
-import AccountInformationArea from "./AccountInformationArea";
+// import AccountInformationArea from "./AccountInformationArea";
 import Toggles from "./Toggles";
 
 function Dashboard(props) {
   const {
-    userId,
+    user,
     selectDashboard,
     pushMessageToSnackbar,
-    isAccountActivated,
-    accountActivation,
+    // isAccountActivated,
+    // accountActivation,
     projectUpsert,
   } = props;
 
-  const [toggles, setToggles] = useState([]);
-  const updateToggle = (index, field, value) => {
-    const newToggles = toggles
-      .map((toggle, indexToChange) => index === indexToChange 
-                  ? {...toggle, [field]: value } 
-                  : toggle )
-    setToggles(newToggles)
-  }
-  const onCreateToggle = () => {
-    setToggles([...toggles, {name: undefined,
-      type: "release",
-      conditions: [],
-      value: false}])
-  }
-  const onDeleteToggle = (index) => {
-    setToggles(toggles.filter((_, indexDelete) => index !== indexDelete))
-  }
+  const [projects, setProjects] = useState([]);
   useEffect(selectDashboard, [selectDashboard]);
   useEffect(() => {
-    setToggles([])
-  }, []);
+    if(user)
+      setProjects(user.projects)
+  }, [user]);
 
   return (
     <Fragment>
-      <Box mt={4}>
+      {/* <Box mt={4}>
         <Typography variant="subtitle1" gutterBottom>
           Your Account
         </Typography>
@@ -46,26 +31,26 @@ function Dashboard(props) {
       <AccountInformationArea
         isAccountActivated={isAccountActivated}
         accountActivation={accountActivation}
-      />
+      /> */}
       <Box mt={4}>
         <Typography variant="subtitle1" gutterBottom>
           Your Projects
         </Typography>
       </Box>
-      <Toggles
-        pushMessageToSnackbar={pushMessageToSnackbar}
-        toggles={toggles}
-        onUpdate={updateToggle}
-        onCreate={onCreateToggle}
-        onDelete={onDeleteToggle}
-        onSend={() => projectUpsert(userId, "Default", toggles)}
-      />
+      {
+        projects.map(project => (<Toggles
+            pushMessageToSnackbar={pushMessageToSnackbar}
+            project={project}
+            onSend={(toggles) => projectUpsert(user.id, project.name, toggles)}
+          />
+        ))
+      }
     </Fragment>
   );
 }
 
 Dashboard.propTypes = {
-  userId: PropTypes.string,
+  user: PropTypes.string,
   pushMessageToSnackbar: PropTypes.func,
   selectDashboard: PropTypes.func.isRequired,
   isAccountActivated: PropTypes.bool.isRequired,

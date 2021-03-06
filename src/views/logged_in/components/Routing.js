@@ -42,7 +42,7 @@ const styles = (theme) => ({
 
 function Routing(props) {
   const {
-    userId,
+    user,
     classes,
     pushMessageToSnackbar,
     selectDashboard,
@@ -61,7 +61,7 @@ function Routing(props) {
           isAccountActivated={isAccountActivated}
           accountActivation={accountActivation}
           projectUpsert={projectUpsert}
-          userId={userId}
+          user={user}
         />
       </Switch>
     </div>
@@ -69,7 +69,7 @@ function Routing(props) {
 }
 
 Routing.propTypes = {
-  userId: PropTypes.string,
+  user: PropTypes.string,
   classes: PropTypes.object.isRequired,
   pushMessageToSnackbar: PropTypes.func,
   selectDashboard: PropTypes.func.isRequired,
