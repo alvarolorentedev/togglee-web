@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Typography, Box } from "@material-ui/core";
-// import AccountInformationArea from "./AccountInformationArea";
+import { Typography, Box, Button } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
 import Toggles from "./Toggles";
 
 function Dashboard(props) {
@@ -9,8 +9,6 @@ function Dashboard(props) {
     user,
     selectDashboard,
     pushMessageToSnackbar,
-    // isAccountActivated,
-    // accountActivation,
     projectUpsert,
   } = props;
 
@@ -23,19 +21,16 @@ function Dashboard(props) {
 
   return (
     <Fragment>
-      {/* <Box mt={4}>
-        <Typography variant="subtitle1" gutterBottom>
-          Your Account
-        </Typography>
-      </Box>
-      <AccountInformationArea
-        isAccountActivated={isAccountActivated}
-        accountActivation={accountActivation}
-      /> */}
       <Box mt={4}>
         <Typography variant="subtitle1" gutterBottom>
           Your Projects
         </Typography>
+        <Button variant="contained" color="primary" aria-label="add" onClick={() => {setProjects([...projects, {
+          name: `Default${projects.length+1}`,
+          toggles: "[]"
+        }])}}>
+        <AddIcon/> Add
+        </Button>
       </Box>
       {
         projects.map(project => (<Toggles
