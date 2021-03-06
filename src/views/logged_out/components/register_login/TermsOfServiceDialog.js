@@ -108,7 +108,7 @@ function TermsOfServiceDialog(props) {
           Governing Law
         </Typography>
         <Typography paragraph>
-          Any claim related to togglee's Website shall be governed by the laws of es without regards to its conflict of law provisions.
+          Any claim related to togglee's Website shall be governed by the laws of Spain without regards to its conflict of law provisions.
         </Typography>
       </DialogContent>
       <DialogActions className={classes.dialogActions}>
