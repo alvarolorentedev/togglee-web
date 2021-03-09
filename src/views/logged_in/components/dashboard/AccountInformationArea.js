@@ -1,17 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
 import {
   Paper,
   Toolbar,
   ListItemText,
-  ListItemSecondaryAction,
-  ListItemIcon,
-  Switch,
   Box,
   withStyles
 } from "@material-ui/core";
-import LoopIcon from "@material-ui/icons/Loop";
 
 const styles = theme => ({
   paper: {
@@ -31,39 +26,19 @@ const styles = theme => ({
 });
 
 function AccountInformationArea(props) {
-  const { classes, toggleAccountActivation, isAccountActivated } = props;
+  const { classes } = props;
   return (
     <Paper className={classes.paper}>
       <Toolbar className={classes.toolbar}>
         <Box display="flex" alignItems="center">
           <Box mr={2}>
             <ListItemText
-              primary="Status"
-              secondary={isAccountActivated ? "Activated" : "Not activated"}
+              primary="Plan"
+              secondary={"Hobby"}
               className="mr-2"
             />
           </Box>
-          <ListItemIcon>
-            <LoopIcon
-              className={classNames(
-                isAccountActivated ? classes.spin : null,
-                classes.scaleMinus
-              )}
-            />
-          </ListItemIcon>
         </Box>
-        <ListItemSecondaryAction className={classes.listItemSecondaryAction}>
-          <Switch
-            color="secondary"
-            checked={isAccountActivated}
-            onClick={toggleAccountActivation}
-            inputProps={{
-              "aria-label": isAccountActivated
-                ? "Deactivate Account"
-                : "Activate Account"
-            }}
-          />
-        </ListItemSecondaryAction>
       </Toolbar>
     </Paper>
   );

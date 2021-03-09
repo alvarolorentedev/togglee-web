@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Typography, Box, Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import Toggles from "./Toggles";
+import AccountInformationArea from "./AccountInformationArea";
 
 function Dashboard(props) {
   const {
@@ -10,6 +11,7 @@ function Dashboard(props) {
     selectDashboard,
     pushMessageToSnackbar,
     projectUpsert,
+    toggleAccountActivation
   } = props;
 
   const [projects, setProjects] = useState([]);
@@ -21,6 +23,10 @@ function Dashboard(props) {
 
   return (
     <Fragment>
+    <AccountInformationArea
+      isAccountActivated={false}
+      toggleAccountActivation={toggleAccountActivation}
+    />
       <Box mt={4}>
         <Typography variant="subtitle1" gutterBottom>
           Your Projects
@@ -49,7 +55,7 @@ Dashboard.propTypes = {
   pushMessageToSnackbar: PropTypes.func,
   selectDashboard: PropTypes.func.isRequired,
   isAccountActivated: PropTypes.bool.isRequired,
-  accountActivation: PropTypes.func,
+  toggleAccountActivation: PropTypes.func,
   projectUpsert: PropTypes.func,
 };
 
