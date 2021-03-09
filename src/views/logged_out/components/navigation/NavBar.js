@@ -66,6 +66,11 @@ function NavBar(props) {
       icon: <BookIcon className="text-white" />
     },
     {
+      onClick: () => window.location.href = "https://github.com/togglee/",
+      name: "Github",
+      icon: <BookIcon className="text-white" />
+    },
+    {
       name: "Register",
       onClick: openRegisterDialog,
       icon: <HowToRegIcon className="text-white" />

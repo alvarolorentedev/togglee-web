@@ -5,7 +5,6 @@ import {
   Grid,
   Typography,
   Card,
-  Button,
   Box,
   withStyles,
   withWidth,
@@ -157,19 +156,9 @@ function HeadSection(props) {
                             variant={isWidthUp("lg", width) ? "h6" : "body1"}
                             color="textSecondary"
                           >
-                            A Rich Feature Toggle Library an SaaS
+                            A Rich Feature Toggle Library and SaaS
                           </Typography>
                         </Box>
-                        <Button
-                          variant="contained"
-                          color="secondary"
-                          fullWidth
-                          className={classes.extraLargeButton}
-                          classes={{ label: classes.extraLargeButtonLabel }}
-                          href="https://github.com/togglee"
-                        >
-                          Explore GitHub
-                        </Button>
                       </div>
                     </Box>
                   </Grid>

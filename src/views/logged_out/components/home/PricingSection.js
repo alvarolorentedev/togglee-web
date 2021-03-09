@@ -84,14 +84,31 @@ function PricingSection(props) {
             data-aos="zoom-in-up"
           >
             <PriceCard
-              title="You Run It"
+              title="Open Source"
               pricing={
                 <span>
                   Free
-                  <Typography display="inline"> / month</Typography>
                 </span>
               }
-              features={["Library all languages", "Documentation"]}
+              features={["Library all languages", "Documentation", "Community Support"]}
+            />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            lg={3}
+            className={classes.cardWrapper}
+            data-aos="zoom-in-up"
+          >
+            <PriceCard
+              title="Hobby"
+              pricing={
+                <span>
+                  Free
+                </span>
+              }
+              features={["Library all languages", "Documentation", "1 User", "1 Project", "Community Support"]}
             />
           </Grid>
           <Grid
@@ -105,14 +122,35 @@ function PricingSection(props) {
           >
             <PriceCard
               highlighted
-              title="We Run It"
+              title="Indy"
               pricing={
                 <span>
                   $2
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
-              features={["Library all languages", "Documentation", "Hosted toggles", "UI To update and Define toggles"]}
+              features={["Library all languages", "Documentation", "Hosted toggles", "1 User", "20 Projects", "Dev Team Support"]}
+            />
+          </Grid>
+          <Grid
+            item
+            className={classes.cardWrapperHighlighted}
+            xs={12}
+            sm={6}
+            lg={3}
+            data-aos="zoom-in-up"
+            data-aos-delay="200"
+          >
+            <PriceCard
+              highlighted
+              title="Teams"
+              pricing={
+                <span>
+                  $5
+                  <Typography display="inline">  per user / month</Typography>
+                </span>
+              }
+              features={["Library all languages", "Documentation", "Hosted toggles", "Unlimited User", "Unlimited Projects", "Possible volume discount", "Dev Team Support"]}
             />
           </Grid>
         </Grid>
