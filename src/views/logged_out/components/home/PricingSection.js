@@ -125,7 +125,7 @@ function PricingSection(props) {
               title="Indy"
               pricing={
                 <span>
-                  $2
+                  $3
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
@@ -146,7 +146,7 @@ function PricingSection(props) {
               title="Teams"
               pricing={
                 <span>
-                  $5
+                  $4
                   <Typography display="inline">  per user / month</Typography>
                 </span>
               }
