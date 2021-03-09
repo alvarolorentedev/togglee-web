@@ -31,10 +31,15 @@ function Dashboard(props) {
         <Typography variant="subtitle1" gutterBottom>
           Your Projects
         </Typography>
-        <Button variant="contained" color="primary" aria-label="add" onClick={() => {setProjects([...projects, {
-          name: `Default${projects.length+1}`,
-          toggles: "[]"
-        }])}}>
+        <Button 
+          variant="contained" 
+          color="primary" 
+          aria-label="add" 
+          disabled={projects.length > 0 }
+          onClick={() => {setProjects([...projects, {
+            name: `Default${projects.length+1}`,
+            toggles: "[]"
+          }])}}>
         <AddIcon/> Add
         </Button>
       </Box>
