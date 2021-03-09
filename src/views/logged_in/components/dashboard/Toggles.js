@@ -141,6 +141,7 @@ function TogglesTable(props) {
         <Typography>{project.name}</Typography>
       </AccordionSummary>
       <AccordionDetails className={classes.dBlock}>
+      <Typography>URL: {project.url}</Typography>
         <form onSubmit={(e) => {
           e.preventDefault();
           onSend(toggles);

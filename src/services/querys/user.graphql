@@ -8,6 +8,7 @@ query($id: String!) {
             owner,
             id,
             isTest,
+            url,
             toggles
         }
     }
