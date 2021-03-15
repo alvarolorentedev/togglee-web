@@ -166,7 +166,7 @@ function Footer(props) {
                   variant="outlined"
                   type="submit"
                 >
-                  Subscribe
+                  Subscribe to Newsletter
                 </ColoredButton>
               </Box>
             </form>
