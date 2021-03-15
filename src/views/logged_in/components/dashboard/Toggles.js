@@ -110,6 +110,7 @@ const CONTEXT_TOGGLE_OPERATIONS=[
 function TogglesTable(props) {
   const { onSend, project, classes } = props;
   const [toggles, setToggles] = useState([]);
+  const [upsertSuccess, setUpsertSuccess] = useState("");
 
   const onCreate = () => {
     setToggles([...toggles, {name: undefined,
@@ -128,6 +129,11 @@ function TogglesTable(props) {
                   : toggle )
     setToggles(newToggles)
   }
+  
+  const upsert = async () => {
+    const result = await onSend(toggles);
+    setUpsertSuccess(result.success);
+  }
 
   useEffect(() => {
       setToggles(JSON.parse(project.toggles))
@@ -141,10 +147,10 @@ function TogglesTable(props) {
         <Typography>{project.name}</Typography>
       </AccordionSummary>
       <AccordionDetails className={classes.dBlock}>
-      <Typography>URL: {project.url}</Typography>
+      <HighlightedInformation> {project.url} </HighlightedInformation>
         <form onSubmit={(e) => {
           e.preventDefault();
-          onSend(toggles);
+          upsert();
         }}>
       {
         toggles.length > 0
@@ -254,6 +260,18 @@ function TogglesTable(props) {
       : (<HighlightedInformation>
           No toggles defined yet.
         </HighlightedInformation>)
+      }
+      { upsertSuccess === true && (
+              <HighlightedInformation>
+                Project Updated Correctly
+              </HighlightedInformation>
+            )
+      }
+      { upsertSuccess === false && (
+          <HighlightedInformation>
+            🙇‍♂️  Oh no!!! we could not update your project. We might have a bug or our cloud provider is down. Please try again in a few minutes . 🙇‍♂️
+          </HighlightedInformation>
+        )
       }
       <Button variant="contained" color="primary" aria-label="add" onClick={onCreate}>
       <AddIcon/> Add

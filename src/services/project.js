@@ -16,10 +16,6 @@ export const upsertProject = async (
   name,
   toggles,
 ) => {
-  console.log("here")
-  console.log(owner)
-  console.log(name)
-  console.log(toggles)
   return (await axios.post(
       `${process.env.REACT_APP_SERVICE_URL}/graphql`,
       {
