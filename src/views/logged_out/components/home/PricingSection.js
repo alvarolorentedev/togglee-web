@@ -122,14 +122,14 @@ function PricingSection(props) {
           >
             <PriceCard
               highlighted
-              title="Indy"
+              title="Indie"
               pricing={
                 <span>
                   $3
                   <Typography display="inline"> / month</Typography>
                 </span>
               }
-              features={["Library all languages", "Documentation", "Hosted toggles", "1 User", "20 Projects", "Dev Team Support"]}
+              features={["Library all languages", "Documentation", "Hosted toggles", "1 User", "20 Projects", "Dev Team Support", "Available Soon (contact us)"]}
             />
           </Grid>
           <Grid
@@ -150,7 +150,7 @@ function PricingSection(props) {
                   <Typography display="inline">  per user / month</Typography>
                 </span>
               }
-              features={["Library all languages", "Documentation", "Hosted toggles", "Unlimited User", "Unlimited Projects", "Possible volume discount", "Dev Team Support"]}
+              features={["Library all languages", "Documentation", "Hosted toggles", "Unlimited User", "Unlimited Projects", "Possible volume discount", "Dev Team Support", "Available Soon (contact us)"]}
             />
           </Grid>
         </Grid>
