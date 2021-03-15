@@ -144,6 +144,33 @@ function Footer(props) {
       <div className={classes.footerInner}>
         <Grid container spacing={isWidthUp("md", width) ? 10 : 5}>
           <Grid item xs={12} md={6} lg={4}>
+          <form method="POST" action="https://formspree.io/f/mvovedrl">
+              <Box display="flex" flexDirection="column">
+                <Box mb={1}>
+                  <TextField
+
+                    name="_replyto"
+                    variant="outlined"
+                    placeholder="email"
+                    inputProps={{ "aria-label": "Get in Touch" }}
+                    InputProps={{
+                      className: classes.whiteBg
+                    }}
+                    rows={4}
+                    fullWidth
+                    required
+                  />
+                </Box>
+                <ColoredButton
+                  color={theme.palette.common.white}
+                  variant="outlined"
+                  type="submit"
+                >
+                  Subscribe
+                </ColoredButton>
+              </Box>
+            </form>
+            <Box mb={1}></Box>
             <form method="POST" action="https://formspree.io/f/moqpbgba">
               <Box display="flex" flexDirection="column">
                 <Box mb={1}>
@@ -188,7 +215,7 @@ function Footer(props) {
           </Grid>
           <Hidden mdDown>
             <Grid item xs={12} md={6} lg={4}>
-              <Box display="flex" justifyContent="center">
+            <Box display="flex" justifyContent="center">
                 <div>
                   {infos.map((info, index) => (
                     <Box display="flex" mb={1} key={index}>
