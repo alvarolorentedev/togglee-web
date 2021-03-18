@@ -219,7 +219,11 @@ function RegisterDialog(props) {
             ? (<HighlightedInformation>
               Something went wrong please contact us or try to create your account again.
             </HighlightedInformation>)
-            : ""
+            : (
+              <HighlightedInformation>
+                Registration is available for alpha users, thanks for joining.
+              </HighlightedInformation>
+              )
           }
         </Fragment>
       }
