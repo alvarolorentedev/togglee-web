@@ -136,7 +136,7 @@ function TogglesTable(props) {
   }
 
   useEffect(() => {
-      setToggles(JSON.parse(project.toggles))
+      setToggles(project.toggles)
   }, [project]);
   const updateCondition = (toggleIndex, conditions, index, value) =>
     onUpdate(toggleIndex, "conditions", conditions.map((condition, indexToChange) => index === indexToChange ? value : condition))
