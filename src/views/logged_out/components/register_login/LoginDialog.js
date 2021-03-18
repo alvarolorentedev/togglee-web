@@ -134,11 +134,8 @@ function LoginDialog(props) {
                 We have send instructions on how to reset your password to your
                 email address
               </HighlightedInformation>
-            ) : (
-              <HighlightedInformation>
-                Login is disabled until we go live.
-              </HighlightedInformation>
-            )}
+            ) : ""
+            }
           </Fragment>
         }
         actions={

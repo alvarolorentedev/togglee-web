@@ -213,18 +213,13 @@ function RegisterDialog(props) {
           )}
           {status === "accountCreated" ? (
             <HighlightedInformation>
-              We have created your account. Please click on the link in the
-              email we have sent to you before logging in.
+              We have created your account.
             </HighlightedInformation>
           ) : status === "errorCreatingAccount" 
             ? (<HighlightedInformation>
               Something went wrong please contact us or try to create your account again.
             </HighlightedInformation>)
-            : (
-              <HighlightedInformation>
-                Registration is disabled until we go live.
-              </HighlightedInformation>
-              )
+            : ""
           }
         </Fragment>
       }
