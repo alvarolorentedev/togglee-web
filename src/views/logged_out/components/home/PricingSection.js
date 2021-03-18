@@ -108,7 +108,7 @@ function PricingSection(props) {
                   Free
                 </span>
               }
-              features={["Library all languages", "Documentation", "1 User", "1 Project", "Community Support", "Alpha Available Now"]}
+              features={["Library all languages", "Documentation", "1 User", "1 Project", "Community Support", "Available Soon (contact us)"]}
             />
           </Grid>
           <Grid
