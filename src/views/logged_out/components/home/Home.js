@@ -5,13 +5,13 @@ import FeatureSection from "./FeatureSection";
 import PricingSection from "./PricingSection";
 
 function Home(props) {
-  const { selectHome } = props;
+  const { selectHome, openRegisterDialog } = props;
   useEffect(() => {
     selectHome();
   }, [selectHome]);
   return (
     <Fragment>
-      <HeadSection />
+      <HeadSection openRegisterDialog={openRegisterDialog} />
       <FeatureSection />
       <PricingSection />
     </Fragment>
@@ -19,7 +19,8 @@ function Home(props) {
 }
 
 Home.propTypes = {
-  selectHome: PropTypes.func.isRequired
+  selectHome: PropTypes.func.isRequired,
+  openRegisterDialog: PropTypes.func.isRequired,
 };
 
 export default Home;

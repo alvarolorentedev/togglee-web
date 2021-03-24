@@ -9,8 +9,11 @@ import {
   withStyles,
   withWidth,
   isWidthUp,
+  Hidden,
+  Button
 } from "@material-ui/core";
 import WaveBorder from "../../../shared/components/WaveBorder";
+import ZoomVideo from "../../../shared/components/ZoomVideo";
 
 const styles = (theme) => ({
   extraLargeButtonLabel: {
@@ -94,9 +97,8 @@ const styles = (theme) => ({
     paddingTop: theme.spacing(4),
   },
 });
-
 function HeadSection(props) {
-  const { classes, theme, width } = props;
+  const { classes, theme, width, openRegisterDialog } = props;
   return (
     <Fragment>
       <div className={classNames("lg-p-top", classes.wrapper)}>
@@ -109,7 +111,7 @@ function HeadSection(props) {
             >
               <div className={classNames(classes.containerFix, "container")}>
                 <Box justifyContent="space-between" className="row">
-                  <Grid item xs={12} md={12}>
+                  <Grid item xs={12} md={5}>
                     <Box
                       display="flex"
                       flexDirection="column"
@@ -118,50 +120,43 @@ function HeadSection(props) {
                     >
                       <Box mb={4}>
                         <Typography
-                          variant="h4"
-                          className={classes.brandText}
-                          display="inline"
-                          color="secondary"
+                          variant={isWidthUp("lg", width) ? "h3" : "h4"}
                         >
-                          T
-                        </Typography>
-                        <Typography
-                          variant="h4"
-                          className={classes.brandText}
-                          display="inline"
-                          color="primary"
-                        >
-                          o
-                        </Typography>
-                        <Typography
-                          variant="h4"
-                          className={classes.brandText}
-                          display="inline"
-                          color="secondary"
-                        >
-                          ggl
-                        </Typography>
-                        <Typography
-                          variant="h4"
-                          className={classes.brandText}
-                          display="inline"
-                          color="primary"
-                        >
-                          ee
+                          A Rich Feature Toggle Library and SaaS
                         </Typography>
                       </Box>
+
                       <div>
                         <Box mb={2}>
                           <Typography
                             variant={isWidthUp("lg", width) ? "h6" : "body1"}
                             color="textSecondary"
                           >
-                            A Rich Feature Toggle Library and SaaS
+                            The tool you need to deploy and activate features with confidence, run experiments and keep your clients happy.
                           </Typography>
                         </Box>
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          fullWidth
+                          className={classes.extraLargeButton}
+                          classes={{ label: classes.extraLargeButtonLabel }}
+                          onClick={openRegisterDialog}
+                        >
+                          Create an account now
+                        </Button>
                       </div>
                     </Box>
                   </Grid>
+                  <Hidden smDown>
+                    <Grid item md={6}>
+                      <ZoomVideo
+                        src={`${process.env.PUBLIC_URL}/images/logged_out/why_togglee.mp4`}
+                        className={classes.image}
+                        alt="header example"
+                      />
+                    </Grid>
+                  </Hidden>
                 </Box>
               </div>
             </Card>
