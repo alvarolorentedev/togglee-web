@@ -143,7 +143,7 @@ function HeadSection(props) {
                           classes={{ label: classes.extraLargeButtonLabel }}
                           onClick={openRegisterDialog}
                         >
-                          Create an account now
+                          Create a free account now
                         </Button>
                       </div>
                     </Box>
