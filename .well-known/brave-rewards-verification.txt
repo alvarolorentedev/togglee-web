@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: togglee.com
+Token: be8a375e01782b83b29df680cdb67ea21545741a4baf16d5918fed1f7b2480ec
