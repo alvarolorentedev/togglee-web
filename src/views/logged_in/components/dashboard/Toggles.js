@@ -280,7 +280,7 @@ function TogglesTable(props) {
       }
       { upsertSuccess === true && (
               <HighlightedInformation className={classes.HighlightedBox}>
-                Project Updated Correctly
+                Project Updated Correctly. If you don´t see the URL refresh this page.
               </HighlightedInformation>
             )
       }
