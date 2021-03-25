@@ -38,7 +38,7 @@ function Dashboard(props) {
           disabled={projects.length > 0 }
           onClick={() => {setProjects([...projects, {
             name: `Default${projects.length+1}`,
-            toggles: "[]"
+            toggles: []
           }])}}>
         <AddIcon/> Add
         </Button>

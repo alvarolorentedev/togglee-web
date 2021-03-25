@@ -23,6 +23,7 @@ import EnhancedTableHead from "../../../shared/components/EnhancedTableHead";
 import HighlightedInformation from "../../../shared/components/HighlightedInformation";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddIcon from "@material-ui/icons/Add";
+import CopyIcon from "@material-ui/icons/FileCopy";
 import LoopIcon from "@material-ui/icons/Loop";
 import { v4 as uuid } from 'uuid';
 
@@ -50,6 +51,18 @@ const styles = theme => ({
   },
   firstData: {
     paddingLeft: theme.spacing(3)
+  },
+  HighlightedBox: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    width: "100%"
+  },
+  TableActions:{
+    display: "flex",
+    justifyContent: "flex-end"
+  },
+  TableButtons: {
+    margin: theme.spacing(1)
   }
 });
 
@@ -147,7 +160,11 @@ function TogglesTable(props) {
         <Typography>{project.name}</Typography>
       </AccordionSummary>
       <AccordionDetails className={classes.dBlock}>
-      <HighlightedInformation> {project.url} </HighlightedInformation>
+      {toggles.length > 0 && (<TextField className={classes.HighlightedBox}
+        label="Toggles URL"
+        value={project.url}
+        InputProps={{endAdornment: <CopyIcon onClick={() => {navigator.clipboard.writeText(project.url)}}/>}}
+      />)}
         <form onSubmit={(e) => {
           e.preventDefault();
           upsert();
@@ -155,7 +172,7 @@ function TogglesTable(props) {
       {
         toggles.length > 0
         ? (
-          <Table aria-labelledby="tableTitle">
+          <Table aria-labelledby="tableTitle" className={classes.HighlightedBox}>
           <EnhancedTableHead rowCount={toggles.length} rows={rows} />
           <TableBody>
             {toggles
@@ -257,28 +274,30 @@ function TogglesTable(props) {
           </TableBody>
         </Table>
         )
-      : (<HighlightedInformation>
+      : (<HighlightedInformation className={classes.HighlightedBox}>
           No toggles defined yet.
         </HighlightedInformation>)
       }
       { upsertSuccess === true && (
-              <HighlightedInformation>
+              <HighlightedInformation className={classes.HighlightedBox}>
                 Project Updated Correctly
               </HighlightedInformation>
             )
       }
       { upsertSuccess === false && (
-          <HighlightedInformation>
+          <HighlightedInformation className={classes.HighlightedBox}>
             🙇‍♂️  Oh no!!! we could not update your project. We might have a bug or our cloud provider is down. Please try again in a few minutes . 🙇‍♂️
           </HighlightedInformation>
         )
       }
-      <Button variant="contained" color="primary" aria-label="add" onClick={onCreate}>
-      <AddIcon/> Add
-      </Button>
-      <Button type="submit" variant="contained" color="primary" aria-label="add">
-      <LoopIcon/> Update
-      </Button>
+      <div className={classes.TableActions}>
+        <Button type="button" variant="contained" color="primary" aria-label="add" onClick={onCreate} className={classes.TableButtons}>
+        <AddIcon/> Add
+        </Button>
+        <Button type="submit" variant="contained" color="primary" aria-label="update" className={classes.TableButtons}>
+        <LoopIcon/> Update
+        </Button>
+      </div>
       </form>
       </AccordionDetails>
     </Accordion>
