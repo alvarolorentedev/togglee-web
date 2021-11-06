@@ -135,16 +135,6 @@ function HeadSection(props) {
                             The tool you need to deploy and activate features with confidence, run experiments and keep your clients happy.
                           </Typography>
                         </Box>
-                        <Button
-                          variant="contained"
-                          color="secondary"
-                          fullWidth
-                          className={classes.extraLargeButton}
-                          classes={{ label: classes.extraLargeButtonLabel }}
-                          onClick={openRegisterDialog}
-                        >
-                          Create a free account now
-                        </Button>
                       </div>
                     </Box>
                   </Grid>
