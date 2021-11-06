@@ -122,7 +122,7 @@ function HeadSection(props) {
                         <Typography
                           variant={isWidthUp("lg", width) ? "h3" : "h4"}
                         >
-                          A Rich Feature Toggle Library and SaaS
+                          A Rich Feature Toggle Library Static File Backed
                         </Typography>
                       </Box>
 

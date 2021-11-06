@@ -31,7 +31,7 @@ function Main(props) {
 
   const selectHome = useCallback(() => {
     smoothScrollTop();
-    document.title = "Toggle - Feature Toggles SaaS";
+    document.title = "Toggle - Feature Toggles Static File Backed";
     setSelectedTab("Home");
   }, [setSelectedTab]);
 
