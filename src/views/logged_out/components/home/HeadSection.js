@@ -9,8 +9,7 @@ import {
   withStyles,
   withWidth,
   isWidthUp,
-  Hidden,
-  Button
+  Hidden
 } from "@material-ui/core";
 import WaveBorder from "../../../shared/components/WaveBorder";
 import ZoomVideo from "../../../shared/components/ZoomVideo";
@@ -98,7 +97,7 @@ const styles = (theme) => ({
   },
 });
 function HeadSection(props) {
-  const { classes, theme, width, openRegisterDialog } = props;
+  const { classes, theme, width } = props;
   return (
     <Fragment>
       <div className={classNames("lg-p-top", classes.wrapper)}>
